@@ -42,12 +42,13 @@ model Account {
 }
 
 model Listing {
-  id          String @id @default(auto()) @map("_id") @db.ObjectId
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
   title       String
   description String
   imageSrc    String
-  userId      String @db.ObjectId
-  type        String
+  userId      String   @db.ObjectId
+  createdAt   DateTime @default(now())
+  category    String
   tag         String
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)

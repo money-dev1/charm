@@ -36,10 +36,11 @@ const UploadModal = () => {
     reset,
   } = useForm<FieldValues>({
     defaultValues: {
-      category: '',
+      type: '',
       imageSrc: '',
       title: '',
       description: '',
+      tag: '',
     },
   })
 
@@ -103,7 +104,7 @@ const UploadModal = () => {
   let bodyContent = (
     <div className="flex flex-col gap-8">
       <Heading
-        title="Which of these best describes your place?"
+        title="Select a proper category of your charm"
         subtitle="Pick a category"
       ></Heading>
       <div
@@ -132,10 +133,7 @@ const UploadModal = () => {
   if (step === STEPS.DESCRIPTION) {
     bodyContent = (
       <div className="flex flex-col gap-8">
-        <Heading
-          title="How would you describe your place?"
-          subtitle="Short and sweet work best!"
-        />
+        <Heading title="Input any description" subtitle="" />
         <Input
           id="title"
           label="Title"

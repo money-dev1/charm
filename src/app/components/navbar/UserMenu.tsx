@@ -26,6 +26,7 @@ const UseMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
   }, [])
 
   const onUpload = useCallback(() => {
+    console.log(`onUpload ${currentUser}`)
     if (!currentUser) {
       return loginModal.onOpen()
     }
@@ -53,25 +54,15 @@ const UseMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
             {currentUser ? (
               <>
                 <MenuItem
-                  onClick={() => router.push('/favorites')}
-                  label="My favorites"
-                />
-                <MenuItem
-                  onClick={() => {
-                    router.push('/reservations')
-                  }}
-                  label="My reservations"
-                />
-                <MenuItem
                   onClick={() => router.push('/properties')}
                   label="My properties"
                 />
                 <hr />
                 <MenuItem onClick={() => signOut()} label="Logout" />
+                <MenuItem onClick={onUpload} label="Upload charms" />
               </>
             ) : (
               <>
-                <MenuItem onClick={onUpload} label="Upload charms" />
                 <MenuItem onClick={loginModal.onOpen} label="Login" />
                 <MenuItem onClick={registerModal.onOpen} label="Sign up" />
               </>
